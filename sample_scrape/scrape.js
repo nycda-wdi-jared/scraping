@@ -26,11 +26,13 @@ request('http://pitchfork.com/reviews/albums/', function(err, response, html){
 		var image = $(element).find('img').first().attr('src');
 		var link = $(element).find('a').first().attr('href');
 
-		results.push({
+		var data = {
 			title: title,
 			image: image,
 			link: link
-		});
+		};
+		//console.log(data)
+		results.push(data);
 		console.log(results)
 	});
 });
