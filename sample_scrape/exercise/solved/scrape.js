@@ -19,13 +19,13 @@ request('https://finance.yahoo.com/tech/', function(err, response, html){
 	//then i am merely adding that information to an array
 	var $ = cheerio.load(html);
 	var results = [];
-	$('ul').each(function(){
+	$('div').each(function(){
 		//console.log(index)
-		if($(this).data('reactid') == 34){
-			var li = $(this).find('li');
-			li.each(function(){
-				console.log($(this).find("img").attr("src"))
-			})
+		if($(this).data('reactid') == 6){
+			var image = $(this).find("img").first().attr("src");
+			if(image){
+				console.log(image)
+			}
 		}
 		// var title = $(element).find('h2').first().text();
 		// var image = $(element).find('img').first().attr('src');

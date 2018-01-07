@@ -5,7 +5,7 @@ $(document).ready(function(){
 		method: 'GET',
 		url: '/api/scrape'
 	}).then(function(results){
-		//console.log(results)
+		console.log(results)
 		var scrapedDiv = $('<div id="scraped-div">');
 
 		//appending all of the information from the scrape to the client via jquery

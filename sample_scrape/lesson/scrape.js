@@ -8,10 +8,10 @@ request('http://pitchfork.com/reviews/albums/', function(err, response, html){
 	if (err) {
 		throw err
 	}
-	//console.log("--response--")
-	//console.log(response)
-	//console.log("--html--")
-	//console.log(html)
+	// console.log("--response--")
+	// console.log(response)
+	// console.log("--html--")
+	// console.log(html)
 
 	//you are able to query through the html of the request route using cheerio
 	//look for the 'review' class in the urls html (google inspect)
@@ -21,7 +21,6 @@ request('http://pitchfork.com/reviews/albums/', function(err, response, html){
 	var results = [];
 	$('.review').each(function(index, element){
 		//console.log(index)
-		//console.log(element)
 		var title = $(element).find('h2').first().text();
 		var image = $(element).find('img').first().attr('src');
 		var link = $(element).find('a').first().attr('href');
@@ -33,6 +32,6 @@ request('http://pitchfork.com/reviews/albums/', function(err, response, html){
 		};
 		//console.log(data)
 		results.push(data);
-		console.log(results)
 	});
+	console.log(results)
 });

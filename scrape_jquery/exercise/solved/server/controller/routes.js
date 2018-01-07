@@ -28,29 +28,43 @@ router.get('/api/scrape', function(req,res){
 		//then i am merely adding that information to an array
 		var $ = cheerio.load(html);
 		var results = [];
-		$('ul').each(function(){
-			//console.log(index)
-			if($(this).data('reactid') == 34){
-				var li = $(this).find('li');
-				li.each(function(){
-					results.push($(this).find("img").attr("src"))
-				})
-			}
-			// var title = $(element).find('h2').first().text();
-			// var image = $(element).find('img').first().attr('src');
-			// var link = $(element).find('a').first().attr('href');
+		// $('ul').each(function(){
+		// 	//console.log(index)
+		// 	if($(this).data('reactid') == 34){
+		// 		var li = $(this).find('li');
+		// 		li.each(function(){
+		// 			results.push($(this).find("img").attr("src"))
+		// 		})
+		// 	}
+		// 	// var title = $(element).find('h2').first().text();
+		// 	// var image = $(element).find('img').first().attr('src');
+		// 	// var link = $(element).find('a').first().attr('href');
 
-			// var data = {
-			// 	title: title,
-			// 	image: image,
-			// 	link: link
-			// };
-			//console.log(data)
-			// results.push(data);
-			// console.log(results)
+		// 	// var data = {
+		// 	// 	title: title,
+		// 	// 	image: image,
+		// 	// 	link: link
+		// 	// };
+		// 	//console.log(data)
+		// 	// results.push(data);
+		// 	// console.log(results)
+		// });
+		// //sending the results array to the client
+		// res.json(results)
+		var imageObj = {};
+		$('div').each(function(){
+			if($(this).data('reactid') == 6){
+				var image = $(this).find("img").first().attr("src");
+				var h2 = $(this).find('h2').first().text();
+				var a = $(this).find('a').first().attr("href");
+				if(image){
+					imageObj.image = image;
+					imageObj.text = h2;
+					imageObj.href = a;
+				}
+			}
 		});
-		//sending the results array to the client
-		res.json(results)
+		res.json(imageObj);
 	});
 });
 
