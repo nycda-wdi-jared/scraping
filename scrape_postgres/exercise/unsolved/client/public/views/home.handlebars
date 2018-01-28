@@ -1,0 +1,28 @@
+<link rel="stylesheet" type="text/css" href="./public/css/home.css">
+<script src="./public/js/home.js"></script>
+
+<div class="container">
+	<h1>Handlebars Scrape</h1>
+	<h3 class="text-center">2017-2018 NBA Team Stats</h3>
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Team</th>
+					<th>TO Ratio</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each stats}}
+					<tr>
+						{{!-- Look for 'inc' in the helpers --}}
+						<td>{{inc @index}}</td>
+						<td>{{this.team}}</td>
+						<td>{{this.ppg}}</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
